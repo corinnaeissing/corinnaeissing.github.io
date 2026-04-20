@@ -732,9 +732,9 @@ details[open] > .collapse-title {
 
 details[open] > .collapse-content {
   opacity: 1;
-  max-height: 1000px;
+  max-height: max-content;
   padding-top: var(--space-3);
-  padding-bottom: var(--space-2);
+  padding-bottom: 0;
 }
 
 .collapse-content p,
