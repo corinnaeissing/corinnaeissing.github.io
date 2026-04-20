@@ -97,7 +97,7 @@ a {
 
 body a:not([class]) {
   color: var(--brand-green);
-  text-decoration: underline;
+  text-decoration: none;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.25rem;
 }
@@ -270,8 +270,8 @@ body a:not([class]):focus-visible {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  min-height: 5rem;
-  padding-block: 0.75rem;
+  min-height: 3.5rem;
+  padding-block: 0.5rem;
   gap: 1rem;
 }
 
@@ -314,6 +314,7 @@ body a:not([class]):focus-visible {
   padding-block: 0.35rem;
   color: var(--text);
   font-size: var(--text-sm);
+  text-decoration: none;
 }
 
 .site-nav a::after {
