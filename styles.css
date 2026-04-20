@@ -516,6 +516,128 @@ a {
 }
 
 /* =========================
+   Collapsible sections
+   ========================= */
+
+.collapse {
+  margin: var(--space-4) 0;
+}
+
+.collapse-title {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--brand-green);
+  font-size: var(--text-md);
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--line);
+  transition: color 180ms ease;
+}
+
+.collapse-title:hover {
+  color: var(--brand-orange);
+}
+
+.collapse-content {
+  margin-top: var(--space-3);
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--brand-green-soft);
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease, max-height 0.4s ease, padding 0.4s ease;
+}
+
+details[open] .collapse-content {
+  opacity: 1;
+  max-height: 1000px; /* Adjust based on content */
+  padding-top: var(--space-2);
+}
+
+.collapse-content p,
+.collapse-content ul {
+  margin-bottom: var(--space-3);
+}
+
+/* =========================
+   Info boxes
+   ========================= */
+
+.info-box {
+  background: linear-gradient(180deg, #f6f1e7, #efe7da);
+  border: 1px solid rgba(120, 110, 90, 0.08);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  margin: var(--space-4) 0;
+  box-shadow: var(--shadow);
+}
+
+.info-box h3 {
+  margin: 0 0 var(--space-3);
+  color: var(--brand-green);
+  font-family: var(--script-font);
+  font-size: var(--text-lg);
+  font-weight: 400;
+}
+
+.box-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+@media (max-width: 640px) {
+  .box-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================
+   Curved section
+   ========================= */
+
+.curved-section {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  margin: var(--space-5) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.curved-section::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -10%;
+  width: 120%;
+  height: 40px;
+  background: var(--bg);
+  border-bottom-left-radius: 50% 100%;
+  border-bottom-right-radius: 50% 100%;
+}
+
+.curved-section h3 {
+  color: var(--brand-orange);
+  font-family: var(--script-font);
+  font-size: var(--text-lg);
+  margin: 0 0 var(--space-3);
+}
+
+/* =========================
+   Contact details
+   ========================= */
+
+.contact-details {
+  text-align: center;
+  margin-top: var(--space-4);
+}
+
+.contact-details p {
+  margin: var(--space-2) 0;
+  font-size: var(--text-md);
+}
+
+/* =========================
    Generic content sections
    ========================= */
 
