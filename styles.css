@@ -1063,3 +1063,35 @@ ul li {
 section[id] {
   scroll-margin-top: 2rem;
 }
+.image-text-layout {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.image-column {
+  flex: 1;
+}
+
+.image-column img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.text-column {
+  flex: 1;
+  text-align: left;
+}
+
+.text-column p {
+  text-align: left;
+  color: var(--muted);
+}
+
+/* For mobile/smaller screens */
+@media (max-width: 768px) {
+  .image-text-layout {
+    flex-direction: column;
+  }
+}
