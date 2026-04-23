@@ -550,6 +550,15 @@ body a:not([class]):focus-visible {
   line-height: 1.2;
 }
 
+.prompt-image {
+  width: 100%;
+  height: auto;
+  max-height: 120px;
+  object-fit: cover;
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
 /* subtle organic variation (like in your screenshot) */
 .prompt-card:nth-child(1) {
   transform: rotate(-1deg);
@@ -800,6 +809,51 @@ h1, h2, h3, h4, h5, h6 {
   .box-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.four-grid {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+}
+
+.image-box {
+  background: transparent;
+  padding: var(--space-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.themes-box {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.themes-box .text-content {
+  flex: 1;
+}
+
+.themes-box .image-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.themes-box .content-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  max-height: 150px;
+  object-fit: contain;
 }
 
 /* =========================
@@ -1092,6 +1146,45 @@ section[id] {
 /* For mobile/smaller screens */
 @media (max-width: 768px) {
   .image-text-layout {
+    flex-direction: column;
+  }
+}
+
+.image-text-layout .image-column img {
+  max-height: 280px;
+  width: auto;
+  object-fit: contain;
+}
+
+.text-image-layout {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.text-image-layout .text-column {
+  flex: 1;
+  text-align: left;
+}
+
+.text-image-layout .text-column p {
+  text-align: left;
+  color: var(--muted);
+}
+
+.text-image-layout .image-column {
+  flex: 1;
+}
+
+.text-image-layout .image-column img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* For mobile/smaller screens */
+@media (max-width: 768px) {
+  .text-image-layout {
     flex-direction: column;
   }
 }
