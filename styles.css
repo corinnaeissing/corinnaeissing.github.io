@@ -16,12 +16,60 @@ html {
 body {
   margin: 0;
   min-width: 320px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
   line-height: 1.6;
   color: #3e4038;
   background:
     radial-gradient(circle at top left, rgba(255, 255, 255, 0.65), transparent 30%),
     linear-gradient(to bottom, #f7f4ed, #f4efe6);
+}
+
+/* =========================
+   Harmonized typography
+   ========================= */
+
+/* Paragraphs and body text */
+p {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-md);
+  color: var(--text);
+}
+
+/* Lists spacing and readable defaults */
+ul,
+ol {
+  margin: 0 0 var(--space-3);
+  padding-left: 1.25rem;
+  color: var(--text-secondary);
+}
+
+/* Role-based handwritten / display headings used across components */
+.handwritten,
+.section-title,
+.prompt-card h2,
+.info-box h3,
+.offer-card h3 {
+  font-family: var(--script-font);
+  font-weight: 400;
+  color: var(--brand-green);
+  line-height: 1.1;
+}
+
+/* Sizes for the handwritten/display headings */
+.section-title {
+  font-size: var(--text-script);
+}
+.prompt-card h2,
+.info-box h3,
+.offer-card h3 {
+  font-size: var(--heading-2);
+}
+
+/* Fallback for other headings to remain readable */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--brand-green);
+  font-family: var(--font-sans);
+  margin: 0 0 var(--space-3);
 }
 
 img {
@@ -134,6 +182,7 @@ body a:not([class]):focus-visible {
   /* Brand colors */
   --brand-green: #667c56;
   --brand-green-soft: #90a77b;
+  --brand-green-bright: #8ab263;
   --brand-orange: #dc8a35;
   --brand-orange-dark: #bf7225;
   --line: rgba(84, 93, 76, 0.15);
@@ -163,8 +212,17 @@ body a:not([class]):focus-visible {
   --text-lg: clamp(1.2rem, 1rem + 0.8vw, 1.8rem);
   --text-xl: clamp(1.9rem, 1.3rem + 2vw, 3.4rem);
   --text-script: clamp(1.8rem, 1.2rem + 1.8vw, 3rem);
-
   --script-font: "Brush Script MT", "Segoe Script", "Snell Roundhand", cursive;
+
+  /* prefer Patrick Hand for handwritten headings */
+  --script-font: 'Patrick Hand', "Brush Script MT", "Segoe Script", "Snell Roundhand", cursive;
+
+  /* Primary type scale and font stacks (harmonized) */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --heading-1: clamp(2.2rem, 1.8rem + 2vw, 3rem);
+  --heading-2: clamp(1.6rem, 1.3rem + 1.2vw, 2.4rem);
+  --heading-3: clamp(1.2rem, 1rem + 0.8vw, 1.8rem);
+  --lead-size: var(--text-lg);
 
   /* Transition timing */
   --transition-fast: 150ms ease;
@@ -277,8 +335,11 @@ body a:not([class]):focus-visible {
 
 .brand {
   position: static;
-  justify-self: center;
-  text-align: center;
+  justify-self: start;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
   white-space: nowrap;
 }
 
@@ -287,6 +348,22 @@ body a:not([class]):focus-visible {
   font-family: var(--script-font);
   font-size: clamp(1.8rem, 1.25rem + 1.25vw, 2.8rem);
   color: var(--brand-green);
+  line-height: 1;
+}
+
+.brand-logo {
+  width: clamp(3rem, 2.4rem + 2vw, 4.5rem);
+  height: clamp(3rem, 2.4rem + 2vw, 4.5rem);
+  display: block;
+  object-fit: cover;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
   line-height: 1;
 }
 
@@ -416,21 +493,26 @@ body a:not([class]):focus-visible {
 
 .button-primary {
   color: #fffdf9;
-  background: linear-gradient(180deg, #e89a49, var(--brand-orange));
+  background: linear-gradient(180deg, #a2c072, var(--brand-green-bright));
 }
 
 .button-primary:hover {
-  background: linear-gradient(180deg, #eb9f51, var(--brand-orange-dark));
+  background: linear-gradient(180deg, #b4cc82, #8db065);
 }
 
 .button-primary:active {
-  background: linear-gradient(180deg, var(--brand-orange-dark), #a6631f);
+  background: linear-gradient(180deg, #8db065, #6f9a59);
 }
 
 .button-secondary {
   color: var(--brand-green);
   background: var(--surface);
   border: 2px solid var(--brand-green-soft);
+}
+
+#contact .button {
+  display: inline-flex;
+  margin: 0 auto 1.5rem;
 }
 
 .button-secondary:hover {
@@ -486,7 +568,31 @@ body a:not([class]):focus-visible {
 .hero-copy {
   max-width: 40rem;
   color: #fff;
-  padding: var(--space-5) 0;
+  padding: var(--space-3);
+  position: absolute;
+  left: 0.5rem;
+  bottom: var(--space-4);
+  background: transparent;
+}
+
+.hero-copy p {
+  margin: 0;
+  font-family: var(--script-font);
+  font-size: var(--text-script);
+  font-weight: 400;
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+@media (max-width: 700px) {
+  .hero-copy {
+    left: var(--space-3);
+    bottom: var(--space-3);
+    max-width: 70%;
+  }
+  .hero-copy p {
+    font-size: clamp(1.4rem, 1.2rem + 1.5vw, 2rem);
+  }
 }
 
 .hero-quote {
@@ -511,6 +617,7 @@ body a:not([class]):focus-visible {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-3);
+  margin-bottom: var(--space-5);
 }
 
 .prompt-card {
@@ -543,11 +650,11 @@ body a:not([class]):focus-visible {
 /* handwritten look */
 .prompt-card h2 {
   margin: 0;
-  color: var(--text-secondary);
+  color: var(--brand-green);
   font-family: var(--script-font);
-  font-size: clamp(1.8rem, 1.2rem + 1.4vw, 2.4rem);
+  font-size: var(--heading-2);
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
 .prompt-image {
@@ -615,10 +722,11 @@ body a:not([class]):focus-visible {
 .offer-card h3 {
   margin: var(--space-3) 0 0;
   font-family: var(--script-font);
-  font-size: clamp(1.5rem, 1rem + 0.9vw, 2rem);
+  font-size: var(--heading-2);
   font-weight: 400;
-  color: var(--text-tertiary);
+  color: var(--brand-green);
   line-height: 1.1;
+  text-align: center;
 }
 
 /* =========================
@@ -767,10 +875,11 @@ details[open] > .collapse-content {
 
 .info-box h3 {
   margin: 0 0 var(--space-3);
-  color: var(--brand-green);
+  color: var(--brand-green-bright);
   font-family: var(--script-font);
-  font-size: var(--text-lg);
+  font-size: var(--heading-2);
   font-weight: 400;
+  text-align: center;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -778,11 +887,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .curved-section h3 {
-  color: var(--brand-orange);
+  color: var(--brand-green-bright);
 }
 
 .section-title {
   color: var(--brand-green);
+}
+
+/* Slightly reduce handwritten title size on narrow screens for better fit */
+@media (max-width: 600px) {
+  .section-title {
+    font-size: clamp(1.4rem, 1.2rem + 1vw, 2.2rem);
+    gap: 0.5rem;
+  }
 }
 
 .info-box ul {
@@ -883,10 +1000,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .curved-section h3 {
-  color: var(--brand-orange);
+  color: var(--brand-green-bright);
   font-family: var(--script-font);
   font-size: var(--text-lg);
   margin: 0 0 var(--space-3);
+  font-weight: 400;
+}
+
+.curved-section {
+  text-align: left;
+}
+
+/* Ensure any nested/overriding rules don't center the curved-section text */
+.curved-section p,
+.curved-section > p,
+.curved-section .curved-content,
+.curved-section .curved-content p {
+  text-align: left !important;
+  color: var(--text);
+  margin-bottom: var(--space-3);
 }
 
 /* =========================
