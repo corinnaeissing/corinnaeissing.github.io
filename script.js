@@ -1,26 +1,26 @@
-const menuToggle = document.querySelector(".menu-toggle");
-const siteNav = document.querySelector(".site-nav");
-
-if (menuToggle && siteNav) {
-  menuToggle.addEventListener("click", () => {
-    const isOpen = siteNav.classList.toggle("is-open");
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
-  });
-
-  siteNav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      siteNav.classList.remove("is-open");
-      menuToggle.setAttribute("aria-expanded", "false");
+document.addEventListener('DOMContentLoaded', () => {
+  const navLinks = document.querySelectorAll('.custom-nav-link');
+  const navbarCollapse = document.getElementById('site-nav');
+  
+  if (navbarCollapse) {
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (navbarCollapse.classList.contains('show')) {
+          // Check if Bootstrap is available
+          if (typeof bootstrap !== 'undefined') {
+            const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+            if (bsCollapse) {
+              bsCollapse.hide();
+            } else {
+              // Fallback creation if not instantiated yet
+              new bootstrap.Collapse(navbarCollapse).hide();
+            }
+          } else {
+            // Native fallback
+            navbarCollapse.classList.remove('show');
+          }
+        }
+      });
     });
-  });
-
-  document.addEventListener("click", (event) => {
-    const clickedInsideNav = siteNav.contains(event.target);
-    const clickedToggle = menuToggle.contains(event.target);
-
-    if (!clickedInsideNav && !clickedToggle) {
-      siteNav.classList.remove("is-open");
-      menuToggle.setAttribute("aria-expanded", "false");
-    }
-  });
-}
+  }
+});
