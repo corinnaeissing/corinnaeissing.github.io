@@ -107,6 +107,12 @@ body {
   line-height: 1.1;
 }
 
+.schlagwort {
+  font-family: "Caveat";
+  font-weight: 400;
+  color: var(--brand-green);
+  line-height: 1.1;
+}
 .section-title {
   font-size: var(--text-script);
   font-family: "Caveat", cursive;
