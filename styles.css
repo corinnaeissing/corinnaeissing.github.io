@@ -100,7 +100,6 @@ body {
 /* Role-based handwritten / display headings */
 .handwritten,
 .prompt-card h2,
-.info-box h3,
 .offer-card h3 {
   font-family: var(--script-font);
   font-weight: 400;
@@ -112,7 +111,7 @@ body {
   font-size: var(--text-script);
   font-family: "Caveat", cursive;
   font-optical-sizing: auto;
-  font-weight: 400;
+  font-weight: 700;
   font-style: normal;
   display: flex;
   align-items: center;
@@ -122,6 +121,14 @@ body {
   line-height: 1.1;
 }
 
+.kasten-titel {
+  font-family: "Caveat", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--brand-green);
+  line-height: 1.1;
+}
 .prompt-card h2,
 .info-box h3,
 .offer-card h3 {
