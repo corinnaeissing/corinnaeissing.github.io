@@ -99,7 +99,6 @@ body {
 
 /* Role-based handwritten / display headings */
 .handwritten,
-.prompt-card h2,
 .offer-card h3 {
   font-family: var(--script-font);
   font-weight: 400;
