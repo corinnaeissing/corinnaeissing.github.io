@@ -83,9 +83,22 @@ body {
    Typography
    ========================= */
 
+
+.caveat-400 {
+  font-family: "Caveat", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+.caveat-700 {
+  font-family: "Caveat", cursive;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+
 /* Role-based handwritten / display headings */
 .handwritten,
-.section-title,
 .prompt-card h2,
 .info-box h3,
 .offer-card h3 {
@@ -97,6 +110,16 @@ body {
 
 .section-title {
   font-size: var(--text-script);
+  font-family: "Caveat", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--brand-green);
+  line-height: 1.1;
 }
 
 .prompt-card h2,
@@ -114,17 +137,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--brand-green-bright);
 }
 
-.section-title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  color: var(--brand-green);
-  font-family: var(--script-font);
-  font-size: var(--text-script);
-  font-weight: 400;
-  line-height: 1.1;
-}
 
 .section-title::before,
 .section-title::after {
