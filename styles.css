@@ -70,7 +70,7 @@ body {
   /* Primary type scale and font stacks */
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --heading-1: clamp(2.2rem, 1.8rem + 2vw, 3rem);
-  --heading-2: clamp(1.6rem, 1.3rem + 1.2vw, 2.4rem);
+  --heading-2: clamp(1.2rem, 1.1rem + 1.2vw, 2.4rem);
   --heading-3: clamp(1.2rem, 1rem + 0.8vw, 1.8rem);
 
   /* Transition timing */
@@ -133,6 +133,7 @@ body {
   font-style: normal;
   color: var(--brand-green);
   line-height: 1.1;
+  font-size: var(--text-lg);
 }
 .prompt-card h2,
 .info-box h3,
@@ -292,7 +293,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-copy p {
-  font-family: var(--script-font);
+  font-family: "Caveat"; cursive;
   font-size: var(--text-script);
   font-weight: 400;
   text-shadow: 0 2px 8px rgba(0,0,0,0.15);
