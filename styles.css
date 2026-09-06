@@ -404,8 +404,30 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: var(--shadow-md), var(--shadow-inset);
 }
 
+.qualification-logo-wrap {
+  display: inline-block;
+  width: 120px;
+  max-width: 42%;
+  opacity: 0.95;
+  margin: 0.25rem auto 0;
+}
+
+.qualification-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
 .info-box h3 {
   color: var(--brand-green-bright);
+}
+
+@media (max-width: 576px) {
+  .qualification-logo-wrap {
+    width: 100px;
+    max-width: 56%;
+  }
 }
 
 /* =========================
