@@ -3,10 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbarCollapse = document.getElementById('site-nav');
   const navbarToggler = document.querySelector('.navbar-toggler');
 
-  if (navbarToggler && navbarCollapse && typeof bootstrap === 'undefined') {
+  if (navbarToggler && navbarCollapse) {
     navbarToggler.addEventListener('click', () => {
       const isOpen = navbarCollapse.classList.toggle('show');
       navbarToggler.setAttribute('aria-expanded', String(isOpen));
+      navbarToggler.setAttribute('aria-label', isOpen ? 'Navigation schließen' : 'Navigation öffnen');
     });
   }
   
@@ -14,19 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
     navLinks.forEach(link => {
       link.addEventListener('click', () => {
         if (navbarCollapse.classList.contains('show')) {
-          // Check if Bootstrap is available
-          if (typeof bootstrap !== 'undefined') {
-            const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-            if (bsCollapse) {
-              bsCollapse.hide();
-            } else {
-              // Fallback creation if not instantiated yet
-              new bootstrap.Collapse(navbarCollapse).hide();
-            }
-          } else {
-            // Native fallback
-            navbarCollapse.classList.remove('show');
-          }
+          navbarCollapse.classList.remove('show');
+          navbarToggler?.setAttribute('aria-expanded', 'false');
+          navbarToggler?.setAttribute('aria-label', 'Navigation öffnen');
         }
       });
     });
