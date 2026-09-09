@@ -1,6 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('.custom-nav-link');
   const navbarCollapse = document.getElementById('site-nav');
+  const navbarToggler = document.querySelector('.navbar-toggler');
+
+  if (navbarToggler && navbarCollapse && typeof bootstrap === 'undefined') {
+    navbarToggler.addEventListener('click', () => {
+      const isOpen = navbarCollapse.classList.toggle('show');
+      navbarToggler.setAttribute('aria-expanded', String(isOpen));
+    });
+  }
   
   if (navbarCollapse) {
     navLinks.forEach(link => {
