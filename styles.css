@@ -150,6 +150,12 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--brand-green-bright);
 }
 
+.profile-image {
+  display: block;
+  width: 70%;
+  margin-inline: auto;
+}
+
 
 .section-title::before,
 .section-title::after {
